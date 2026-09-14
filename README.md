@@ -35,6 +35,7 @@ Tools on the **action path** (tool calls, egress, secrets) — not only filterin
 
 - [Adrian](https://github.com/secureagentics/Adrian) — Runtime security monitoring and control for AI agents; catches malicious tool use and policy violations.
 - [Doberman-Core](https://github.com/fu351/Doberman-Core) — Agent security framework: guardrails, prompt-injection handling, and policy around tool execution.
+- [DodoGuard](https://github.com/dodoguardai/dodoguard) — Full-lifecycle agent security for self-hosted low-code platforms (Dify, Coze, FastGPT, n8n, HiAgent): tool-call policy, content screening, audit.
 - [Invariant Labs](https://invariantlabs.ai/) — Runtime guardrails and tracing for agent workflows (commercial; reference architecture for tool-call policies).
 - [MCP Visor](https://github.com/themayursinha/mcp-visor) — Declarative YAML policy on an MCP proxy: parse, redact, chain rules, approval gates, hash-chained audit.
 - [PipeLock](https://github.com/luckyPipewrench/pipelock) — Open-source agent firewall for MCP and agent egress; scans and constrains outbound/tool traffic.
@@ -63,6 +64,7 @@ Agents are **non-human principals acting on your behalf** — identity is the co
 - [JanuScope](https://github.com/giancarloerra/JanuScope) — Local-first MCP policy proxy: tool block, SQL-mutation gate, PII redaction.
 - [mcp-reticle](https://github.com/soth-ai/mcp-reticle) — Intercept, visualize, and profile MCP JSON-RPC traffic.
 - [mcp-shield](https://github.com/riseandignite/mcp-shield) — Detects hidden instructions, exfiltration channels, and cross-origin escalations in installed MCP servers.
+- [toolfence](https://github.com/jiangkoumo/toolfence) — Local, fail-closed policy enforcement with human approval for MCP tool calls.
 - [Model Context Protocol — specification](https://modelcontextprotocol.io/) — Official spec: transports, tools, trust boundaries.
 - [MCP — security best practices (draft)](https://modelcontextprotocol.io/specification/draft/basic/security_best_practices) — Official security guidance for implementers.
 - [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) — Reference MCP servers; study each as **untrusted code with network access**.
@@ -108,6 +110,7 @@ Find misconfigurations **before** runtime — MCP configs, skills, dangerous too
 - [AI Security Rules](https://github.com/SecureCodeWarrior/ai-security-rules) — Security rule packs for AI-assisted coding tools.
 - [Armur VibeScan](https://github.com/Armur-Ai/vibescan) — SAST-style scanner aimed at AI-generated (“vibe-coded”) applications.
 - [Security Context](https://securitycontext.dev/) — Provides AI agents with historical security context (commit fixes + CVEs) for any public GitHub repo via MCP and API.
+- [SkillHawk](https://github.com/Berserk-hub150/skillhawk) — Zero-dependency scanner that catches dangerous agent skills before install (SKILL.md risk patterns).
 
 ---
 
@@ -118,6 +121,7 @@ Evidence for **what the agent did** — required for incident response and compl
 - [Future AGI](https://github.com/future-agi/future-agi) — Open platform for eval, observability, and improvement loops on LLM/agent apps.
 - [OpenLIT](https://github.com/openlit/openlit) — OpenTelemetry-native LLM observability (traces, costs, security-relevant telemetry).
 - [Tracecat](https://github.com/TracecatHQ/tracecat) — *(also listed above)* Case management and automation when agents participate in security ops.
+- [ToolReplay](https://github.com/Matthew0822/ToolReplay) — Hash-chain-sealed tool-call transcripts with deterministic replay and scope-overreach detection — tamper-evident agent audit.
 - [Uber ADR](https://github.com/uber/ADR) — Production agentic detection & response: sensor (Cursor/Claude/Codex traces), two-tier detector, ADR-Bench; prevention/Explorer not fully OSS.
 
 ---
@@ -170,6 +174,10 @@ Where **most production agents** live today (IDE agents, Claude Code, OpenClaw, 
 Peer-reviewed and preprint work on **agents, tools, MCP, and control**.
 
 - [ADR: An Agentic Detection System for Enterprise Agentic AI Security (2026)](https://arxiv.org/abs/2605.17380) — Uber production ADR + ADR-Bench; MLSys 2026 industry track.
+- [A2ABreak: Systematic Security Analysis of the A2A Protocol (2026)](https://arxiv.org/abs/2609.10871) — First systematic security analysis of Google's Agent2Agent protocol: 11 protocol-level vulnerabilities exploitable by spec-compliant adversaries (credential harvesting, context injection).
+- [ACLE-MCP: Attested Capability Leases for Execution-Time Trust in Remote LLM Tool Use (2026)](https://arxiv.org/abs/2609.02690) — Closes the post-authorization trust gap in remote MCP: short-lived capability leases plus workload attestation.
+- [The Agent Incident Registry: Toward Preventing Repeated AI Agent Failures (2026)](https://arxiv.org/abs/2609.11030) — 487 agent incident records (2022–2026) with causal labels — a shared evidence base for how agents actually fail.
+- [A Formal Analysis of Agent Payment Protocols (2026)](https://arxiv.org/abs/2609.00060) — Tamarin formalization of x402, MPP, ACP, and AP2 finds 40 undocumented consistency issues — agentic payments need protocol-level proofs, not prompts.
 - [MCP: Landscape, Security Threats, and Future Research Directions (2025)](https://arxiv.org/abs/2503.23278) — Survey of MCP threat landscape.
 - [MCP Safety Audit: LLMs with MCP Allow Major Security Exploits (2025)](https://arxiv.org/abs/2504.03767) — Empirical safety audit of MCP integrations.
 - [Beyond the Protocol: Attack Vectors in the MCP Ecosystem (2025)](https://arxiv.org/abs/2506.02040) — Attack vectors beyond the base spec.
@@ -178,13 +186,19 @@ Peer-reviewed and preprint work on **agents, tools, MCP, and control**.
 - [Systematic Analysis of MCP Security (2025)](https://arxiv.org/pdf/2508.12538) — Systematic analysis of MCP security properties.
 - [Simplified and Secure MCP Gateways for Enterprise AI (2025)](https://arxiv.org/abs/2504.19997) — Enterprise MCP gateway design.
 - [Design Patterns for Securing LLM Agents against Prompt Injections (2025)](https://arxiv.org/abs/2506.08837) — The canonical patterns paper: action-selector, plan-then-execute, dual-LLM, Codex-style separation.
+- [Delegation Without Trust: An Empirical Gap Analysis of Identity, Authorization, and Runtime Governance in Multi-Agent LLM Systems (2026)](https://arxiv.org/abs/2609.00267) — The MCP authorization model offers no or partial confinement against four modeled multi-agent threats; proposes an authorization broker.
 - [MCP-Guard: A Multi-Stage Defense-in-Depth Framework (2025)](https://arxiv.org/abs/2508.10991) — Layered detection pipeline for tool-description poisoning and exfiltration.
 - [MPMA: Preference Manipulation Attack Against MCP (2025)](https://arxiv.org/abs/2505.11154) — Subtly biasing how agents rank and select tools in multi-server registries.
 - [MCP at First Glance: Studying the Security of MCP Servers (2025)](https://arxiv.org/abs/2506.13538) — Empirical study of 1,899 real MCP servers; 5.5% showed tool-poisoning patterns.
+- [No-Box Vulnerability Analysis: Description-only Detection of Indirect Prompt Injection Vulnerabilities in MCP Servers (2026)](https://arxiv.org/abs/2609.10854) — MCPSEC audits MCP servers from tool metadata alone; 98.9% recall on verified vulnerabilities across 20 servers / 177 tools.
 - [Agent Security Bench (ASB) (ICLR 2025)](https://arxiv.org/abs/2410.02644) — Formalizing attacks & defenses in LLM-based agents across 10 scenarios.
 - [InjecAgent (ACL Findings 2024)](https://aclanthology.org/2024.findings-acl.624/) — Benchmark establishing indirect prompt injection risk for tool-integrated agents.
 - [R-Judge (EMNLP Findings 2024)](https://arxiv.org/abs/2401.10019) — Safety-risk awareness judging over agent interaction traces.
+- [Safe to Resume? Breaking Execution Continuity of Agent Execution via Rollback (2026)](https://arxiv.org/abs/2608.29381) — First security study of agent checkpoint/rollback: attacks on Hermes, Cline, and LangGraph enable malware-verification bypass and double payment.
+- [SoK: Rethinking Jailbreaking in the Era of Agentic AI (2026)](https://arxiv.org/abs/2609.12413) — Systematization of jailbreak attacks and defenses across the full agentic pipeline: planning, memory, tools, inter-agent communication.
 - [ToolSword (2024)](https://arxiv.org/abs/2402.10753) — Safety issues of LLMs in tool learning across three stages.
+- [TrustShiftProbe: Characterizing, Benchmarking, and Defending Staged Trust Attacks on MCP Servers (2026)](https://arxiv.org/abs/2608.23763) — "TrustShift" attacks flip MCP servers from benign to malicious after approval (69.5% success); SHIELD runtime defense cuts this to 42.7%.
+- [What's in Your Agent's Context? Context Privilege Escalation Attacks against AI Agent Harness (2026)](https://arxiv.org/abs/2609.01222) — M-CPE and X-CPE attack classes against 12 agent harnesses (incl. Claude Code and Codex): untrusted content escalating to harness-level privilege.
 - [Agent-SafetyBench (2024)](https://arxiv.org/abs/2412.14470) — Large-scale interactive safety evaluation for LLM agents.
 
 *For more MCP papers and videos, see [awesome-mcp-security](https://github.com/Puliczek/awesome-mcp-security).*
@@ -197,8 +211,11 @@ High-signal **incidents and architecture** posts (agent + MCP). Not exhaustive �
 
 - [Aim Security — EchoLeak: zero-click M365 Copilot exfiltration (CVE-2025-32711)](https://www.aim.security/blog/echoleak-zero-click-copilot-vulnerability) — First zero-click exploit of a production AI agent: RAG context inheritance turned one email into silent data theft.
 - [Anthropic — Building effective agents](https://www.anthropic.com/research/building-effective-agents) — Agent patterns; pair with least-privilege tool design.
+- [Anthropic — Detecting and countering misuse of AI: September 2026](https://www.anthropic.com/threat-intelligence-report-september-2026) — Fourth threat intelligence report: case studies of disrupted Claude misuse across cyber, influence, and surveillance operations (Dec 2025–Aug 2026).
 - [CyberArk — Poison everywhere: no MCP server output is safe (2025)](https://www.cyberark.com/resources/threat-research-blog/poison-everything-no-output-from-your-mcp-server-is-safe/) — Tool and resource poisoning.
+- [Embrace The Red — Breaking Claude Code Opus 5 Auto Mode (2026)](https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/) — "Confused environment" attack: planted repo files steer auto mode into running attacker commands without approval; sandboxing as the control that holds.
 - [Embrace The Red — Copilot: from prompt injection to exfiltration via ASCII smuggling (2024)](https://embracethered.com/blog/posts/2024/m365-copilot-prompt-injection-tool-invocation-and-data-exfil-using-ascii-smuggling/) — The foundational enterprise-copilot exfiltration technique.
+- [Embrace The Red — Recovering Encrypted LLM Reasoning Traces (2026)](https://embracethered.com/blog/posts/2026/recovering-encrypted-llm-thoughts/) — Hidden chain-of-thought is not protected: sibling-model jailbreaks decrypt reasoning traces, and injected "thoughts" are treated as the model's own.
 - [Google DeepMind — Securing the future of AI agents (AI Control Roadmap)](https://deepmind.google/blog/securing-the-future-of-ai-agents/) — Defense-in-depth framework treating capable agents as potentially misaligned: detection levels, response tiers, live monitoring.
 - [Invariant — GitHub MCP exploited: private repo access (2025)](https://invariantlabs.ai/blog/mcp-github-vulnerability) — Realistic tool-scope failure case ("toxic agent flow" across public/private repos).
 - [Invariant — MCP tool poisoning attacks (2025)](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks) — Hidden instructions in tool descriptions that persist across projects.
@@ -206,13 +223,18 @@ High-signal **incidents and architecture** posts (agent + MCP). Not exhaustive �
 - [JFrog — Critical RCE in mcp-remote (CVE-2025-6514)](https://jfrog.com/blog/2025-6514-critical-mcp-remote-rce-vulnerability/) — OS command injection in the OAuth flow of the bridge most stdio-only clients use to reach remote servers.
 - [Legit Security — Remote prompt injection in GitLab Duo (2025)](https://www.legitsecurity.com/blog/remote-prompt-injection-in-gitlab-duo) — Source-code theft and HTML injection via hidden prompts in merge requests.
 - [Microsoft — Protecting against indirect prompt injection attacks in MCP (2025)](https://developer.microsoft.com/blog/protecting-against-indirect-injection-attacks-mcp) — Vendor guidance on trust boundaries when tool output is untrusted input.
+- [Nightingale Collective — Discovery of a new OpenAI agent message board (2026)](https://collusion.wiki/) — Accidental-cyberattack forensics: read-only benchmark agents used a public wiki as a covert message board (~18,000 posts), sharing answers and sandbox-bypass techniques until shutdown.
 - [Oligo — Critical RCE in MCP Inspector (CVE-2025-49596)](https://www.oligo.security/blog/critical-rce-vulnerability-in-anthropic-mcp-inspector-cve-2025-49596) — Browser-to-localhost attack chain against developer tooling (0.0.0-day + missing proxy auth).
 - [Pomerium — When AI has root: lessons from the Supabase MCP data leak (2025)](https://www.pomerium.com/blog/when-ai-has-root-lessons-from-the-supabase-mcp-data-leak) — The lethal-trifecta incident: privileged agent + untrusted tickets + public channel.
 - [Simon Willison — The lethal trifecta (2025)](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) — Private data + untrusted content + external communication: why this combination fails.
 - [Simon Willison — MCP has prompt injection security problems (2025)](https://simonwillison.net/2025/Apr/9/mcp-prompt-injection/) — Why tool context is an attack surface.
+- [Simon Willison — OpenAI agents attacked RubyGems back in May (2026)](https://simonwillison.net/2026/Sep/12/openai-agents-rubygems/) — Follow-up attribution on the RubyGems package flood: LLM-authored malicious packages exfiltrating via RubyDoc.info — agent evals escaping into production supply chains.
 - [Snyk — ToxicSkills: malicious skills in agent registries (2026)](https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/) — First large audit of the skill ecosystem; ~37% of scanned skills had security flaws.
+- [The Hacker News — Autonomous AI agents compromised thousands of credentials in under six hours (2026)](https://thehackernews.com/2026/09/autonomous-ai-agents-compromise.html) — GTIG report: a self-running attacker framework assembled from markdown playbooks — scanning, troubleshooting, and IP rotation with no human supervision.
+- [The Hacker News — GitSpawn: malicious .git configs can make AI coding agents run commands (2026)](https://thehackernews.com/2026/09/malicious-git-configs-can-make-claude.html) — Eight `core.fsmonitor` flaws across seven CLI agents fire at session start, often before trust prompts; four unpatched at disclosure.
 - [Trail of Bits — How MCP servers can steal your conversation history (2025)](https://blog.trailofbits.com/2025/04/23/how-mcp-servers-can-steal-your-conversation-history/) — Data exfiltration via malicious servers.
 - [Trail of Bits — Jumping the line: MCP servers attack before first use (2025)](https://blog.trailofbits.com/2025/04/21/jumping-the-line-how-mcp-servers-can-attack-you-before-you-ever-use-them/) — Install-time / supply-chain risks.
+- [Trail of Bits — VMs won't contain cyber-capable agents (2026)](https://blog.trailofbits.com/2026/08/26/vms-wont-contain-cyber-capable-agents/) — Why "put it in a VM" stops being a containment story for cyber-capable agents; sandbox design must assume escape attempts.
 - [vulnerableMCP.info](https://vulnerablemcp.info/) — Community-maintained tracker of MCP-specific CVEs and disclosed vulnerabilities.
 - [Wiz — MCP Security Research Briefing (2025)](https://www.wiz.io/blog/mcp-security-research-briefing) — Enterprise-oriented threat summary.
 
@@ -250,6 +272,7 @@ High-signal **incidents and architecture** posts (agent + MCP). Not exhaustive �
 - [awesome-mcp-security](https://github.com/Puliczek/awesome-mcp-security) — MCP-specific security (papers, tools, incidents).
 - [awesome-llm-security](https://github.com/corca-ai/awesome-llm-security) — Broader LLM security; many items apply to agents.
 - [awesome-skills-security](https://github.com/Eyadkelleh/awesome-skills-security) — Security testing for agent skills.
+- [Awesome-GUI-Agent-Security](https://github.com/Yuxuan2003/Awesome-GUI-Agent-Security) — Paper list for GUI / computer-use / browser agent security, organized by attack and defense axes.
 - [Awesome-AI-Security](https://github.com/TalEliyahu/Awesome-AI-Security) — Curated AI security resources, research, and tools; dedicated agent tooling & MCP security section. (Site: [awesomeaisecurity.com](https://www.awesomeaisecurity.com/))
 
 ---
